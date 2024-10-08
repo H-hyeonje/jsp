@@ -1,0 +1,16 @@
+@charset "UTF-8";
+*{
+	color:blue;
+	font-size :40px;
+}
+body>p{
+	width:300px;
+	background-color:gray;
+}
+body>p:first-child>a{
+	color:red;
+	
+}
+body>p>a:hover{
+	font-size:60px;
+}

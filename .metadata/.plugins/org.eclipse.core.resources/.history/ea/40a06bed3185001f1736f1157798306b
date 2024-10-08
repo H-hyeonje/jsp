@@ -1,0 +1,16 @@
+
+    <%@ page contentType="applecation/txt" %>
+    <%
+    response.setHeader("Content-Disposition", "attachment; filename=\"output.txt\"");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	Today is : <%= new java.util.Date() %>
+	<p><a href="home"></a></p>
+</body>
+</html>
