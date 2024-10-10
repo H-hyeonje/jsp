@@ -9,5 +9,6 @@
 <body>
 	<p>오늘의 날짜 및 시간</p>
 	<p> <%= (new java.util.Date()).toLocaleString() %></p>
+	<p><a href="home">home</a></p>
 </body>
 </html>
