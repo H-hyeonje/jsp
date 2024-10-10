@@ -28,5 +28,17 @@
 <a href="4_2">예제 4_2</a>
 <a href="4_3">예제 4_3</a>
 <a href="4_4">예제 4_4</a>
+<a href="4_5">예제 4_5</a>
+<a href="4_6">예제 4_6</a>
+<a href="4_7">예제 4_7</a>
+<a href="4_8">예제 4_8</a>
+<form action="4_0" method="get">
+	<input type="text" name="id"/>
+	<input type="text" name="name"/>
+	<input type="submit" value="전송"></input>
+<a href="4_9">예제 4_9</a>
+<a href="4_10">예제 4_10</a>
+<a href="4_11">예제 4_11</a>
+</form>
 </body>
 </html>
