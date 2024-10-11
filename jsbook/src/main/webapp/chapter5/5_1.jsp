@@ -1,7 +1,6 @@
 <%@page import="chapter05.exam5_1"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ page import="chapter05.exam5_1"  %>
 <!DOCTYPE html>
 <html>
 <head>

@@ -39,11 +39,12 @@
 <a href="4_9">예제 4_9</a>
 <a href="4_10">예제 4_10</a>
 <a href="4_11">예제 4_11</a>
-<form action="5_1" method="get">
+<form action="5_1" method="post">
 	<p> 아이디 :<input type="text" name="id">
 	<p> 비밀번호 :<input type="text" name="passwd">
 	<p><input type="submit" value="전송"></p>
 </form>
+<a href="5_2">예제 5_2</a>
 
 </body>
 </html>
