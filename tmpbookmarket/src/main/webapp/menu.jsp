@@ -16,6 +16,9 @@
         </svg>
 			<span class="fs-4">Home</span>
 		</a>
+		<!--  /를 붙이면 절대경로로 나타내겠다는 표시 -->
+		<a href="products">전체 상품보기</a>
 	</header>
+	
 </body>
 </html>

@@ -19,10 +19,28 @@
  		<p class="col-md-8 fs-4">BookList</p>
  	</div>
  </div>
-
-
-
-
-</div>
+ 
+ <% ArrayList<Book> listOfBooks =bookDAO.getAllBooks(); %>
+ 
+ <div class="row align-items-md-stretch  text-center">
+ 	<%
+ 		for(int i=0;i<listOfBooks.size();i++){
+ 			Book book=listOfBooks.get(i);%>
+ 	<div class="col-md-4">
+	 	<div class="h-100 p-2">
+			<h5><b><%= book.getName() %></b></h5>
+			<p><%= book.getAuthor() %></p>
+			<p><%= book.getPublisher() %>|<%= book.getUnitprice() %></p>
+			<p><%= book.getDescription().substring(0,55) %>...</p>
+			<p><%= book.getUnitprice() %> 원</p>
+ 		</div>
+ 	</div>		
+ 	<% }%>
+ 		
+ 	
+ 	</div>
+ 	
+ 	<%@ include file="footer.jsp" %>
+ </div>
 </body>
 </html>

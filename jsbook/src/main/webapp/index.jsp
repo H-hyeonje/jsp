@@ -32,13 +32,18 @@
 <a href="4_6">예제 4_6</a>
 <a href="4_7">예제 4_7</a>
 <a href="4_8">예제 4_8</a>
-<form action="4_0" method="get">
+<!--  <form action="4_0" method="get">
 	<input type="text" name="id"/>
 	<input type="text" name="name"/>
-	<input type="submit" value="전송"></input>
+	<input type="submit" value="전송"></input>-->
 <a href="4_9">예제 4_9</a>
 <a href="4_10">예제 4_10</a>
 <a href="4_11">예제 4_11</a>
+<form action="5_1" method="get">
+	<p> 아이디 :<input type="text" name="id">
+	<p> 비밀번호 :<input type="text" name="passwd">
+	<p><input type="submit" value="전송"></p>
 </form>
+
 </body>
 </html>

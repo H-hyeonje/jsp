@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="dto.Book" %>
-<jsp:useBean id="bookDAO" class="dao.BookRepository" scope="session"></jsp:useBean>
+<%
+	ArrayList<Book> listOfBooks=(ArrayList<Book>)request.getAttribute("arry");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,10 +22,26 @@
  		<p class="col-md-8 fs-4">BookList</p>
  	</div>
  </div>
-
-
-
-
-</div>
+ 
+ <div class="row align-items-md-stretch  text-center">
+ 	<%
+ 		for(int i=0;i<listOfBooks.size();i++){
+ 			Book book=listOfBooks.get(i);%>
+ 	<div class="col-md-4">
+	 	<div class="h-100 p-2">
+			<h5><b><%= book.getName() %></b></h5>
+			<p><%= book.getAuthor() %></p>
+			<p><%= book.getPublisher() %> | <%= book.getReleaseDate() %></p>
+			<p><%= book.getDescription().substring(0,55) %>...</p>
+			<p><%= book.getUnitprice() %> 원</p>
+ 		</div>
+ 	</div>		
+ 	<% }%>
+ 		
+ 	
+ 	</div>
+ 	
+ 	<%@ include file="footer.jsp" %>
+ </div>
 </body>
 </html>
