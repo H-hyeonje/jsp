@@ -34,6 +34,7 @@
 			<p><%= book.getPublisher() %> | <%= book.getReleaseDate() %></p>
 			<p><%= book.getDescription().substring(0,55) %>...</p>
 			<p><%= book.getUnitprice() %> 원</p>
+			<p><a href="./book.jsp?id=<%=book.getBookId()%>" class="btn btn-secondary" role="button">상세정보 &raquo;</a>
  		</div>
  	</div>		
  	<% }%>

@@ -1,8 +1,0 @@
-@charset "UTF-8";
-*{
-	color:blue;
-	font-size :40px;
-}
-body>first-Child:p>a{
-	color:red;
-}

@@ -2,6 +2,8 @@ package dto;
 
 import java.io.Serializable;
 
+import dao.BookRepository;
+
 public class Book implements Serializable{
 	private static final long serialVersionUID=-4274700572038677000L;
 	
@@ -90,7 +92,6 @@ public class Book implements Serializable{
 		return serialVersionUID;
 	}
 
-	
 	
 	
 	
