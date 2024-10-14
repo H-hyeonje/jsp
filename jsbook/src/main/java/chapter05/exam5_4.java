@@ -2,6 +2,7 @@ package chapter05;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,7 +13,8 @@ public class exam5_4 extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		RequestDispatcher a=req.getRequestDispatcher("chapter5/5_4.jsp");
+		a.forward(req, resp);
 	}
 
 	@Override

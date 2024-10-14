@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>로그인을 실패 했습니다.</p>
-	<p><a href="5_4">로그인 가기</a>
+	<p>이페이지는 5초마다 새로고침 됩니다.</p>
+	<p><%= new java.util.Date() %>
 </body>
 </html>
