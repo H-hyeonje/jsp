@@ -1,5 +1,4 @@
 package controller;
-
 import java.io.IOException;
 import dao.*;
 import dto.Book;
@@ -31,39 +30,43 @@ public class addController extends HttpServlet {
 		String unitsInStock=req.getParameter("unitsInStock");
 		String condition=req.getParameter("condition");
 		
+			System.out.println(bookId);
 		Integer price=0;
 		if(unitPrice!=null) {
-		   if(unitPrice.isEmpty()) {
-			price=0;
-		 }
-		else {
-			price=Integer.valueOf(unitPrice);
-		}
-		}
-		long stock;
+			if(unitPrice.isEmpty()) {
+				price=0;
+			}
+			else {
+				price=Integer.valueOf(unitPrice);
+				}
+			}
 		
-		if(unitsInStock.isEmpty()){
-			stock=0;
-		}
-		else{
-			stock=Long.valueOf(unitsInStock);
+		
+		long stock=0;
+		if(unitsInStock!=null) {
+			if(unitsInStock.isEmpty()){
+				stock=0;
+			}
+			else{
+				stock=Long.valueOf(unitsInStock);
+			}
 		}
 		BookRepository dao=BookRepository.getInstance();
 		
-		Book newBook=new Book();
-		newBook.setBookId(bookId);
-		newBook.setName(name);
-		newBook.setUnitprice(price);
-		newBook.setAuthor(author);
-		newBook.setPublisher(publisher);
-		newBook.setPublisher(releaseDate);
-		newBook.setDescription(description);
-		newBook.setCategory(category);
-		newBook.setUnitsInStock(stock);
-		newBook.setCondition(condition);
+		Book newBook=new Book(bookId,name,price);
+			newBook.setAuthor(author);
+			newBook.setDescription(description);
+			newBook.setPublisher(publisher);
+			newBook.setCategory(category);
+			newBook.setUnitsInStock(stock);		
+			newBook.setReleaseDate(releaseDate);
+			newBook.setCondition(condition);
+			
+
 		
 		dao.addBook(newBook);
 		resp.sendRedirect("books.jsp");
+	
 	}
 	
 }

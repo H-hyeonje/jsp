@@ -9,7 +9,6 @@
 <body>
 	<% 
 		String a=(String)request.getAttribute("aa");
-		out.println(a);
 	%>
 	<p>연결
 	<img src="img/<%= a %>">

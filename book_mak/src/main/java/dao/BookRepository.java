@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+
 import dto.Book;
 
 
@@ -8,16 +9,13 @@ public class BookRepository{
 	
 	
 	private ArrayList<Book> listOfBooks = new ArrayList<Book>();
-	
-	// BookRepository 클래스 객체생성을 미리하고 공유되도록 1개만 유지
 	private static BookRepository bookrepository = new BookRepository();
-	// 싱글턴 방식으로 1개로 유지되는 객체를 리턴함
 	public static BookRepository getInstance() {
 		return bookrepository;
 	}
-	public void addBook(Book book) {
-		listOfBooks.add(book);
-	}
+
+
+
 	
 	public BookRepository() {
 	
@@ -54,23 +52,29 @@ public class BookRepository{
 		listOfBooks.add(book3);
 		
 		
-	}
+	}	
+	
+	public void addBook(Book book) {
+	      listOfBooks.add(book);
+	        }
+
+
+
 	public ArrayList<Book> getAllBooks() {
-		return listOfBooks;
+		return listOfBooks;	
 	}
 	public Book getBookById(String bookId) {
-		//Book bookById = null;
-
-		for (int i = 0; i < listOfBooks.size(); i++) {
-			Book book = listOfBooks.get(i);
-			if (book.getBookId().equals(bookId)) {
-				
-				return book;
-				//bookById = book;
-				//break;
-			}
-		}
-		return null;
+	    if (bookId == null || listOfBooks == null) {
+	        return null; // bookId가 null이거나 listOfBooks가 null인 경우
+	    }
+	    
+	    for (Book book : listOfBooks) {
+	        if (book.getBookId() != null && book.getBookId().equals(bookId)) {
+	            return book; // bookId가 일치하는 경우
+	        }
+	    }
+	    
+	    return null; // 일치하는 bookId가 없는 경우
 	}
 	
 

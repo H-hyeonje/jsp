@@ -21,7 +21,6 @@ public class Book implements Serializable{
 	
 	
 	public Book() {
-		super();
 	}
 	public Book(String bookId, String name, int unitprice) {
 		this.bookId = bookId;

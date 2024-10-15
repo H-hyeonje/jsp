@@ -37,6 +37,7 @@
       
 	 <div class="row align-items-md-stretch   text-center">	 	
 	 <%
+	if (listOfBooks != null && !listOfBooks.isEmpty()){ 
 		for (int i = 0; i < listOfBooks.size(); i++) {
 			Book book = listOfBooks.get(i);
 	  %>
@@ -52,7 +53,7 @@
 			</div>	
 		</div>			
 		<%
-			}
+			}}
 		%>
 	
 		</div>	

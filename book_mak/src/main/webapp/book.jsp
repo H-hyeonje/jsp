@@ -27,6 +27,7 @@
 	--%>
 	<%
 	    Book book = (Book)request.getAttribute("book");
+		
 	%>
 	
 	
