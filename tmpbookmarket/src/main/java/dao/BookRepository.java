@@ -7,6 +7,9 @@ public class BookRepository
 	//저장소 변수
 	private static ArrayList<Book> listOfBooks=new ArrayList<Book>();
 	private static BookRepository repository= new BookRepository();
+	public void addBook(Book book) {
+		listOfBooks.add(book);
+	}
 	
 	private BookRepository() 
 	{

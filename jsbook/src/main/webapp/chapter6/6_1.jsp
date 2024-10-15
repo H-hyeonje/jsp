@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="6_1" method="post">
+
+	<form action="./6_1_2" method="post" name="member">
 		<p> 아이디 : <input type="text" name="id"><input type="button" value="아이디 중복 검사" name="id"></p>
 		<p> 비밀번호 : <input type="password" name ="pw"></p>
 		<p>  이름 : <input type="text" name="name"></p>

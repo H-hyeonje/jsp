@@ -10,7 +10,7 @@
 </head>
 <body>
 	<%
-		String id=(String)request.getAttribute("id");
+	String id=(String)request.getAttribute("id");
 	String pw=(String)request.getAttribute("pw");
 	String phone1=(String)request.getAttribute("phone1");
 	String phone2=(String)request.getAttribute("phone2");
