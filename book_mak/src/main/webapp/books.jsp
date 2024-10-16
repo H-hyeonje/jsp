@@ -9,7 +9,7 @@
 <html>
 <head>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href=".\\resources\\css\\bootstrap.min.css" />
 <title>도서 목록</title>
 </head>
 <body>
@@ -33,6 +33,8 @@
     --%>
     <%
         ArrayList<Book> listOfBooks = (ArrayList<Book>) request.getAttribute("booklist");
+    	String aa=(String)request.getAttribute("fileName");
+    	out.println(aa);
      %>
       
 	 <div class="row align-items-md-stretch   text-center">	 	
@@ -43,11 +45,11 @@
 	  %>
      	<div class="col-md-4">
        		<div class="h-100 p-2">	
-		
+				<img src="${pageContext.request.contextPath}/resources/images/<%= book.getFileName() %>" style="width: 250px; height: 350px"/>
 				<h5><b><%=book.getName()%></b></h5>
 				<p><%=book.getAuthor()%>
 				<br> <%=book.getPublisher()%> | <%=book.getReleaseDate()%>
-				<p> <%=book.getDescription().substring(0,60)%>...
+				<p> <%=book.getDescription()%>
 				<p><%=book.getUnitprice()%>원
 				<p><a href="Book?id=<%=book.getBookId()%>" class="btn btn-secondary" role="button"> 상세 정보 &raquo;</a>
 			</div>	

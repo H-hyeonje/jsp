@@ -1,6 +1,11 @@
 package controller;
 import java.io.IOException;
-import dao.*;
+import java.util.Enumeration;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import dao.BookRepository;
 import dto.Book;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,18 +24,25 @@ public class addController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		
-		String bookId=req.getParameter("bookId");
-		String name=req.getParameter("name");
-		String unitPrice=req.getParameter("unitPrice");
-		String author=req.getParameter("author");
-		String publisher=req.getParameter("publisher");
-		String releaseDate=req.getParameter("releaseDate");
-		String description=req.getParameter("description");
-		String category=req.getParameter("category");
-		String unitsInStock=req.getParameter("unitsInStock");
-		String condition=req.getParameter("condition");
 		
-			System.out.println(bookId);
+		String realFolder=req.getServletContext().getRealPath("/resources/images");
+		int maxSize=5*1024*1024;
+		String encType="utf-8";
+		System.out.println(realFolder);
+		MultipartRequest multi=new MultipartRequest(req,realFolder,maxSize,encType,new DefaultFileRenamePolicy());
+		
+		String bookId=multi.getParameter("bookId");
+		String name=multi.getParameter("name");
+		String unitPrice=multi.getParameter("unitPrice");
+		String author=multi.getParameter("author");
+		String publisher=multi.getParameter("publisher");
+		String releaseDate=multi.getParameter("releaseDate");
+		String description=multi.getParameter("description");
+		String category=multi.getParameter("category");
+		String unitsInStock=multi.getParameter("unitsInStock");
+		String condition=multi.getParameter("condition");
+		String fileName = multi.getFilesystemName("BookImge");
+		
 		Integer price=0;
 		if(unitPrice!=null) {
 			if(unitPrice.isEmpty()) {
@@ -61,9 +73,9 @@ public class addController extends HttpServlet {
 			newBook.setUnitsInStock(stock);		
 			newBook.setReleaseDate(releaseDate);
 			newBook.setCondition(condition);
-			
-
-		
+			newBook.setFileName(fileName);
+		System.out.println(realFolder);
+		System.out.println(fileName);
 		dao.addBook(newBook);
 		resp.sendRedirect("books.jsp");
 	
