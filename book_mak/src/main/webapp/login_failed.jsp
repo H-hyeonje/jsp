@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="person" class=chapter4.person scope="request"></jsp:useBean>
-	<p> 아이디 :<%=person.getId() %>
-	<p> 이 름 :<%= person.getName() %>
-	<p><a href="home">home</a>
+	<% response.sendRedirect("login.jsp?erro=1"); %>
 </body>
 </html>

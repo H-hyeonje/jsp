@@ -95,7 +95,7 @@
 				<div class="mb-3 row">
 					<label class="col-sm-2"><fmt:message key="condition"></fmt:message></label>
 					<div class="col-sm-5">
-						<input type="radio" name="condition" value="new"><fmt:message key="condition_new"></fmt:message>
+						<input type="radio" name="condition" value="new" checked="checked"><fmt:message key="condition_new"></fmt:message>
 						<input type="radio" name="condition" value="Old"><fmt:message key="condition_Old"></fmt:message>
 						<input type="radio" name="condition" value="Ebook"><fmt:message key="condition_Ebook"></fmt:message>
 					</div>

@@ -1,26 +1,23 @@
-package chapter4;
+package chapter10;
 
 import java.io.IOException;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-@WebServlet("/4_7")
-public class exam4_7 extends HttpServlet{
+@WebServlet("/10_2")
+public class exam10_2 extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher a=req.getRequestDispatcher("chapter4/4_7");
-		a.forward(req, resp);
+		req.getRequestDispatcher("chapter10/10_2.jsp").forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		
 	}
-
+	
 }

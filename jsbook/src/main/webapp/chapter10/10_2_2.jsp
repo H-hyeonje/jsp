@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="bean" class="chapter4.Calculator"></jsp:useBean>
-	<% 
-		int m=bean.process(5);
-		out.println("5의 3제곱 :"+m);
-	
-	%>
+	<p>인증 실패했습니다.
 </body>
 </html>

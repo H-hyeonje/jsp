@@ -8,5 +8,6 @@
 </head>
 <body>
 	<p> 인증 성공했습니다.
+	<a href="home">home</a>
 </body>
 </html>

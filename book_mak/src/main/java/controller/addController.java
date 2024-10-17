@@ -61,7 +61,9 @@ public class addController extends HttpServlet {
 		System.out.println(realFolder);
 		System.out.println(fileName);
 		dao.addBook(newBook);
-		resp.sendRedirect("books.jsp");
+		
+		
+		resp.sendRedirect("Books");
 	
 	}
 	

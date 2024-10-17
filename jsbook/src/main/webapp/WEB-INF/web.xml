@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
   <display-name>jsbook</display-name>
-  
+ <!--  그룹 지정 :보안 적용 그룹지정     -->
  <security-role>
   	<role-name>manager</role-name>
  </security-role>
-  <security-constraint>
+ 
+ <!-- 누구를 : 검사대상 : 어떤 URL을 줄것인가?  -->
+ <security-constraint>
   	<web-resource-collection>
-  		<web-resource-name>jsbook</web-resource-name>
-  		<url-pattern>/10_1</url-pattern>
-  		<http-method>GET</http-method>
+  			<web-resource-name>jsbook</web-resource-name>
+  			<url-pattern>/10_2</url-pattern>
+  			<http-method>GET</http-method>
   	</web-resource-collection>
   	<auth-constraint>
-  		<description></description>
-  		<role-name>manager</role-name>
+  			<description></description>
+  			<role-name>manager</role-name>
   	</auth-constraint>
-  </security-constraint>
-  <login-config>
-  	<auth-method>BASIC</auth-method>
-  </login-config>
+ </security-constraint>
+ <!-- 누구인지 검사 방법 -->
+ <login-config>
+  	<auth-method>FORM</auth-method>
+  	<form-login-config>
+  		<form-login-page>/chapter10/10_2_1.jsp</form-login-page>
+  		<form-error-page>/chapter10/10_2_2.jsp</form-error-page>
+  	</form-login-config>
+ </login-config>
+ 
+ 
   
   
   <welcome-file-list>
