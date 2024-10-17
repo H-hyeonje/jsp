@@ -33,8 +33,7 @@
     --%>
     <%
         ArrayList<Book> listOfBooks = (ArrayList<Book>) request.getAttribute("booklist");
-    	String aa=(String)request.getAttribute("fileName");
-    	out.println(aa);
+
      %>
       
 	 <div class="row align-items-md-stretch   text-center">	 	

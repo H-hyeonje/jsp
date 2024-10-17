@@ -1,6 +1,5 @@
 package controller;
 import java.io.IOException;
-import java.util.Enumeration;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -33,7 +32,7 @@ public class addController extends HttpServlet {
 		
 		String bookId=multi.getParameter("bookId");
 		String name=multi.getParameter("name");
-		String unitPrice=multi.getParameter("unitPrice");
+		String unitPrice=multi.getParameter("unitprice");
 		String author=multi.getParameter("author");
 		String publisher=multi.getParameter("publisher");
 		String releaseDate=multi.getParameter("releaseDate");
@@ -43,26 +42,11 @@ public class addController extends HttpServlet {
 		String condition=multi.getParameter("condition");
 		String fileName = multi.getFilesystemName("BookImge");
 		
-		Integer price=0;
-		if(unitPrice!=null) {
-			if(unitPrice.isEmpty()) {
-				price=0;
-			}
-			else {
-				price=Integer.valueOf(unitPrice);
-				}
-			}
-		
-		
-		long stock=0;
-		if(unitsInStock!=null) {
-			if(unitsInStock.isEmpty()){
-				stock=0;
-			}
-			else{
-				stock=Long.valueOf(unitsInStock);
-			}
-		}
+
+		int price=Integer.parseInt(unitPrice);
+		int Stock=Integer.parseInt(unitsInStock);
+	
+
 		BookRepository dao=BookRepository.getInstance();
 		
 		Book newBook=new Book(bookId,name,price);
@@ -70,7 +54,7 @@ public class addController extends HttpServlet {
 			newBook.setDescription(description);
 			newBook.setPublisher(publisher);
 			newBook.setCategory(category);
-			newBook.setUnitsInStock(stock);		
+			newBook.setUnitsInStock(Stock);		
 			newBook.setReleaseDate(releaseDate);
 			newBook.setCondition(condition);
 			newBook.setFileName(fileName);
