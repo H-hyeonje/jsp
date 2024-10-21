@@ -44,12 +44,18 @@
  </error-page>
  
 
- 
+ <filter>
+ 	<filter-name>Fiter01</filter-name>
+ 	<filter-class>chapter12.exam12_1</filter-class>
+ </filter>
+<filter-mapping>
+	<filter-name>Fiter01</filter-name>
+	<url-pattern>/12_1</url-pattern>
+</filter-mapping>
 
-
-  
   
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
 </web-app>
