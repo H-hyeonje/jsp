@@ -1,4 +1,3 @@
-<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,13 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%! int sum(int a,int b){
-	return a+b;
-}
-	%>
-<% out.println("2 + 3 = "+ sum(2,3)); %>
-
-<p>2 + 3 = <%= sum(2,3) %></p>
-<p><a href="home">돌아가자잉</a>
+	<form action="11_3" method="post">
+		<input type="text" name="num1">
+		<input type="text" name="num2">
+		<input type="submit" value="나누기">
+	</form>
 </body>
 </html>

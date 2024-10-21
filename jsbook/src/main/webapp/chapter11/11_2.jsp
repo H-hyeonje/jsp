@@ -1,6 +1,6 @@
-<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page errorPage="11_2_erroPage.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%! int sum(int a,int b){
-	return a+b;
-}
-	%>
-<% out.println("2 + 3 = "+ sum(2,3)); %>
-
-<p>2 + 3 = <%= sum(2,3) %></p>
-<p><a href="home">돌아가자잉</a>
+	name 파라미터 : <%=request.getParameter("name").toUpperCase() %>
 </body>
 </html>
