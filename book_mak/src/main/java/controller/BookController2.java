@@ -23,8 +23,9 @@ public class BookController2 extends HttpServlet{
 		Book book=dao.getBookById(id);
 		//모델이동 : 리파지토리 연결 후 ArrayList 리턴받아야됨
 		BookRepository br = BookRepository.getInstance();
+		req.setAttribute("URL", req.getRequestURL());
+		req.setAttribute("xx", req.getQueryString());
 		Book bk = br.getBookById(id);
-		
 		req.setAttribute("book", bk);
 		RequestDispatcher ds = req.getRequestDispatcher("book.jsp");
 		ds.forward(req, resp);

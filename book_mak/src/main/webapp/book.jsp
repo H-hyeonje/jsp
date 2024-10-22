@@ -1,6 +1,7 @@
 ﻿<%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="dto.Book"%>
 <%@ page import="dao.BookRepository" %>
+<%@ page errorPage="exceptionNoBookId.jsp" %>
 <!-- 직접 객체 생성하여 접근하지 않음  
 <jsp:useBean id="bookDAO" class="dao.BookRepository" scope="session" />
  -->
