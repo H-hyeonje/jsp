@@ -38,10 +38,7 @@
  	<location>/chapter11/errorCode2.jsp</location>
  </error-page>
  
-  <error-page>
- 	<error-code>404</error-code>
- 	<location>/chapter11/errorCode3.jsp</location>
- </error-page>
+
  
 
  <filter>
