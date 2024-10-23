@@ -33,7 +33,4 @@ public class BookController extends HttpServlet{
 		
 	}
 	
-	public void doGet_1() {}
-	
-	
 }

@@ -6,6 +6,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.BookRepository;
 import dto.Book;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -62,8 +63,8 @@ public class addController extends HttpServlet {
 		System.out.println(fileName);
 		dao.addBook(newBook);
 		
-		
-		resp.sendRedirect("Books");
+		RequestDispatcher ra=req.getRequestDispatcher("/Books");
+		ra.forward(req, resp);
 	
 	}
 	

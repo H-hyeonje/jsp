@@ -2,10 +2,11 @@ package dto;
 
 import java.io.Serializable;
 
-import dao.BookRepository;
-
 public class Book implements Serializable{
+	
 	private static final long serialVersionUID=-4274700572038677000L;
+	
+	
 	
 	private String bookId;              //도서 id
 	private String name;             	//도서명
@@ -18,6 +19,17 @@ public class Book implements Serializable{
 	private String releaseDate;			//출판일(월/년)
 	private String condition;			//신제품 or 구제품 or 리퍼브제품
 	private String fileName;			//이미지 파일명
+	//장바구니 시작
+	private int quantity;
+	
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	//장바구니 끝
 	
 	
 	public Book() {
