@@ -64,7 +64,7 @@
 						<td><%=book.getUnitprice() %></td>
 						<td><%=book.getQuantity() %></td>
 						<td><%=total%></td>
-						<td><a href="" class="badge text-bg-danger">삭제</a></td>
+						<td><a href="addCart?aa=1&& id=<%=book.getBookId()%>" class="badge text-bg-danger">삭제</a></td>
 					</tr>
 					
 					<%
