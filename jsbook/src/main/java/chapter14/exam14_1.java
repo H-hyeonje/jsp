@@ -30,6 +30,8 @@ public class exam14_1  extends HttpServlet{
 				resp.addCookie(cookie_pw);
 				System.out.println("쿠키 생성이 성공함");
 				System.out.println(user_id+"님 환영");
+				RequestDispatcher rd=req.getRequestDispatcher("chapter14/14_2.jsp");
+				rd.forward(req, resp);
 		}else {
 			System.out.println("쿠키 실패");
 			RequestDispatcher rd=req.getRequestDispatcher("chapter14/14_1.jsp");
