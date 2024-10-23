@@ -16,6 +16,8 @@
 			out.println("설정된 쿠키의 속성 값 []"+i+cookies[i].getValue()+"<br>");
 			out.println("==============================<br>");
 		}
+	
 	%>
+	<a href="14_1?a=1">14_3으로</a>
 </body>
 </html>

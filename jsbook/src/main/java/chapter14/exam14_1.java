@@ -14,8 +14,20 @@ public class exam14_1  extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher rd=req.getRequestDispatcher("chapter14/14_1.jsp");
-		rd.forward(req, resp);
+		if("1".equals(req.getParameter("a"))) {
+			System.out.println("AA");
+			RequestDispatcher rd=req.getRequestDispatcher("chapter14/14_3.jsp");
+			rd.forward(req, resp);
+			
+		}
+		else if("2".equals(req.getParameter("a"))) {
+		RequestDispatcher rd=req.getRequestDispatcher("chapter14/14_2.jsp");
+	    	rd.forward(req, resp);
+		}
+		else {
+			RequestDispatcher rd=req.getRequestDispatcher("chapter14/14_1.jsp");
+	    	rd.forward(req, resp);
+		}
 	}
 
 	@Override

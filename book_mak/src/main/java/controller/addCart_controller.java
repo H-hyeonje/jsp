@@ -17,16 +17,43 @@ public class addCart_controller extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String aa=req.getParameter("aa");
-		String id=req.getParameter("bookid");
+		String aa;
+		String id=req.getParameter("id");
 		HttpSession session=req.getSession(false);
-		session.getAttribute("cartlist");
-		if(aa.equals("1")) {
-			
+		ArrayList<Book> Cartlist=(ArrayList<Book>)session.getAttribute("cartlist");
+		if("1".equals(req.getParameter("aa"))) {
 			resp.sendRedirect("cart.jsp");
+			if(id==null || id.trim().equals("")) {
+				resp.sendRedirect("/Books");
+				return;
+				
+			}
+			BookRepository dao=BookRepository.getInstance();
+			
+			Book book=dao.getBookById(id);
+				if(book==null) {
+					resp.sendRedirect("/error");
+					return;
+				}
+				
+			Book goodsQnt=new Book();
+			for(int i=0;i<Cartlist.size();i++) {
+				goodsQnt=Cartlist.get(i);
+				System.out.println(goodsQnt=Cartlist.get(i));
+				if(goodsQnt.getBookId().equals(id)) {
+					Cartlist.remove(goodsQnt);
+					break;
+				}
+			}
+			
 			
 		}
-		else {
+		if(req.getParameter("aa")!="1"){
+			resp.sendRedirect("cart.jsp");	
+		}
+		
+		if(req.getParameter("cartId")!=null) {
+			
 			resp.sendRedirect("cart.jsp");	
 		}
 		

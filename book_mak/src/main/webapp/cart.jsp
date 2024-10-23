@@ -14,6 +14,7 @@
 <body>
 	<%
 		session=request.getSession(false);
+		String cartId=session.getId();
 	%>
 	<div class="container py-4">
 		<%@ include file="menu.jsp" %>
@@ -30,7 +31,7 @@
 				<table width="100%">
 					<tr>
 						<td align="left"><a href="#" class="btn btn-danger">삭제하기</a></td> 
-						<td align="right"><a href="#" class="btn btn-success">주문하기</a></td>
+						<td align="right"><a href="shipp?cartId=<%=cartId%>&a=1" class="btn btn-success">주문하기</a></td>
 					</tr>
 				</table>
 			</div>
@@ -64,7 +65,7 @@
 						<td><%=book.getUnitprice() %></td>
 						<td><%=book.getQuantity() %></td>
 						<td><%=total%></td>
-						<td><a href="addCart?aa=1&& id=<%=book.getBookId()%>" class="badge text-bg-danger">삭제</a></td>
+						<td><a href="addCart?aa=1&id=<%=book.getBookId()%>" class="badge text-bg-danger">삭제</a></td>
 					</tr>
 					
 					<%
