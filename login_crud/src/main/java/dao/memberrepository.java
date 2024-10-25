@@ -86,11 +86,53 @@ public class memberrepository {
 		return arr;
 	}
 	
+
 	//update
+	public memberdto getonemember(String userid){
+		Connection conn;
+		memberdto dto=new memberdto();
+		try {
+			conn = DBconn();
+			ResultSet rs=null;
+			Statement stmt = conn.createStatement();
+			String sql="select * from member where id='"+userid+"'";
+			rs= stmt.executeQuery(sql);
+			if(rs.next()) {
+				String id = rs.getString("id");
+				System.out.println(id);
+				String pw = rs.getString("pw");
+				int age = rs.getInt("age");
+				
+				
+				dto.setId(id);
+				dto.setPw(pw);
+				dto.setAge(age);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
+		
+		return dto;
+	} 
+	
+	public void updatemember(memberdto dto) {
+		try {
+			Connection conn=DBconn();
+			Statement stmt =conn.createStatement();
+			String sql="update member set pw='"+dto.getPw()+"', age="+dto.getAge() +" where id='"+dto.getId() +"'";
+			stmt.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	//delete
-	public void deleteuser(String id) {
+ 	public void deleteuser(String id) {
 		try {
 			//Step 1 db연결
 			Connection conn=DBconn();
