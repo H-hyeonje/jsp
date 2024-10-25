@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/join")
 public class member_controller extends HttpServlet{
-
+// 목표 :creat 데이터를 데이터베이스에 입력하는게 목표
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd=req.getRequestDispatcher("join.jsp");
@@ -38,6 +38,7 @@ public class member_controller extends HttpServlet{
 		
 		
 		//뷰이동
+		resp.sendRedirect("readall");
 	}
 
 }
