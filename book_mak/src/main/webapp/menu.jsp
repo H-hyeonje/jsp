@@ -1,4 +1,6 @@
+ <%@ page contentType="text/html; charset=UTF-8" %>
  <header class="pb-3 mb-4 border-bottom d-flex">
+ 	<div class="contaner">
       <a href="./welcome.jsp" class="d-flex align-items-center text-dark text-decoration-none">
       <svg  width="32" height="32" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
   			<path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
@@ -6,6 +8,15 @@
 		</svg>   
         <span class="fs-4">Home</span>
       </a>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="Books" class="d-flex align-items-center text-dark text-decoration-none"><span class="fs-4">Books</span></a>
+       <ul class="nav nav-pills">
+       		   <!--  R: 전체 상품가져오기 -->	
+        	<li class="nav-item"> <a href="books" class="nav-link">상품 목록</a></li>
+        	   <!--  C: 상품 입력 -->
+        	<li class="nav-item"><a href="addbook" class="nav-link">상품 등록</a></li>
+        	   <!--  u: 상품 수정 -->
+        	<li class="nav-item"> <a href="editbook?edit=updete" class="nav-link">상품 삭제</a></li>
+        	   <!--  d: 상품 삭제 -->
+        	<li class="nav-item"> <a href="editbook?edit=delet" class="nav-link">상품 수정</a></li>
+        </ul>
+        </div>
 </header>    
