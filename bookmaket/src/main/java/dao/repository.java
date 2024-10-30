@@ -18,6 +18,7 @@ public class repository {
 	private static repository rt=new repository();
 	//싱글톤
 	public static repository getInstance() {
+		System.out.println("2: repsitory 싱글콘");
 		return rt;
 	}
 	public Connection dbconn() {
@@ -153,10 +154,12 @@ public class repository {
 		return dto;
 	}
 	public void create(dto dto) {
+		//데이터 베이스 연결
 		Connection conn=dbconn();
+		//SQL 전송
 		PreparedStatement pstm=null;
-		try {
 			String sql="insert into book values(?,?,?,?,?,?,?,?,?,?,?)";
+	try {
 			pstm=conn.prepareStatement(sql);
 			pstm.setString(1, dto.getBookId());
 			pstm.setString(2, dto.getBookname());
@@ -171,7 +174,7 @@ public class repository {
 			pstm.setString(11, dto.getFileName());
 			pstm.executeUpdate();
 			System.out.println("create성공");
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("create 실패"+e.getMessage());
 			e.printStackTrace();
 		}
@@ -194,7 +197,7 @@ public class repository {
 	public void del(String bookid) {
 		Connection conn=dbconn();
 		PreparedStatement psmt=null;
-		String sql="delete from book where ?";
+		String sql="delete from book where bookid=?";
 		try {
 			psmt=conn.prepareStatement(sql);
 			psmt.setString(1, bookid);
@@ -217,7 +220,49 @@ public class repository {
 			}
 		}
 		
+	public void update(dto dto) {
+		Connection conn=dbconn();
+		PreparedStatement pstmt=null;
+		String sql=null;
+	      try {
+	          String filename= dto.getFileName();
+	          if(filename != null) {   
+	             sql = "UPDATE book SET bookname=?, unitPrice=?, author=?, bookdescription=?, publisher=?, category=?, unitsInStock=?, releaseDate=?, bookcondition=?, fileName=? WHERE bookid=?";   
+	             pstmt = conn.prepareStatement(sql);
+	             pstmt.setString(1, dto.getBookname()); 
+	             pstmt.setInt(2, dto.getUnitprice()); 
+	             pstmt.setString(3, dto.getAuthor()); 
+	             pstmt.setString(4, dto.getBookdescription()); 
+	             pstmt.setString(5, dto.getPublisher()); 
+	             pstmt.setString(6, dto.getCategory()); 
+	             pstmt.setLong(7, dto.getUnitsInStock()); 
+	             pstmt.setString(8, dto.getReleaseDate());    
+	             pstmt.setString(9, dto.getBookconditione()); 
+	             pstmt.setString(10, dto.getFileName()); 
+	             pstmt.setString(11, dto.getBookId());  
+	          }
+	          else {
+		         sql = "UPDATE book SET bookname= ?, unitPrice= ?, author= ?, bookdescription= ?, publisher= ?, category= ?, unitsInStock= ?, releaseDate= ?, bookcondition= ? WHERE bookid= ?";   
+	             pstmt = conn.prepareStatement(sql);
+	             pstmt.setString(1, dto.getBookname()); 
+	             pstmt.setInt(2, dto.getUnitprice()); 
+	             pstmt.setString(3, dto.getAuthor()); 
+	             pstmt.setString(4, dto.getBookdescription()); 
+	             pstmt.setString(5, dto.getPublisher()); 
+	             pstmt.setString(6, dto.getCategory()); 
+	             pstmt.setLong(7, dto.getUnitsInStock()); 
+	             pstmt.setString(8, dto.getReleaseDate());    
+	             pstmt.setString(9, dto.getBookconditione()); 
+	             pstmt.setString(11, dto.getBookId()); 
+	          }
+	          pstmt.executeUpdate();
+	       }catch(Exception e) {
+	    	   System.out.println("실패"+e.getMessage());
+	    	   
+	       }
 		
+		
+	}
 		
 	}
 	

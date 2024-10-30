@@ -26,35 +26,40 @@ public class cont5_add extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		
-/*		String realFolder=req.getServletContext().getRealPath("/resources/images");
+		String realFolder=req.getServletContext().getRealPath("/resources/images");
+		System.out.println(realFolder);
 		int maxSize=5*1024*1024;
 		String encType="utf-8";
-		MultipartRequest multi=new MultipartRequest(req,realFolder,maxSize,encType,new DefaultFileRenamePolicy());*/
-		String bookId=req.getParameter("bookId");
-		String name=req.getParameter("name");
-		int unitprice=Integer.parseInt(req.getParameter("unitprice"));
-		String author=req.getParameter("author");
-		String description=req.getParameter("description");
-		String publisher=req.getParameter("publisher");
-		String category=req.getParameter("category");
-		long unitsInStock=Long.parseLong(req.getParameter("unitsInStock"));
-		String releaseDate=req.getParameter("releaseDate");
-		String conditione=req.getParameter("conditione");
-		String fileName=req.getParameter("fileName");
+		MultipartRequest multi=new MultipartRequest(req,realFolder,maxSize,encType,new DefaultFileRenamePolicy());
+		String bookId=multi.getParameter("bookid");
+		String Bookname=multi.getParameter("bookname");
 		
+		String author=multi.getParameter("author");
+		String Bookdescription=multi.getParameter("bookdescription");
+		String publisher=multi.getParameter("publisher");
+		String category=multi.getParameter("category");
+		int unitprice=0;
+		long unitsInStock=0;
+		String releaseDate=multi.getParameter("releaseDate");
+		String Bookconditione=multi.getParameter("conditione");
+		String fileName=multi.getParameter("bookImage");
+		if(multi.getParameter("unitprice")!=null||multi.getParameter("unitsInStock")!=null) {
+		unitprice=Integer.parseInt(multi.getParameter("unitprice"));
+		unitsInStock=Long.parseLong(multi.getParameter("unitsInStock"));
+		}
 		dto dto=new dto();
 		dto.setBookId(bookId);
-		dto.setBookname(name);
+		dto.setBookname(Bookname);
 		dto.setUnitprice(unitprice);
 		dto.setAuthor(author);
-		dto.setBookdescription(description);
+		dto.setBookdescription(Bookdescription);
 		dto.setPublisher(publisher);
 		dto.setCategory(category);
 		dto.setUnitsInStock(unitsInStock);
 		dto.setReleaseDate(releaseDate);
-		dto.setBookconditione(conditione);
+		dto.setBookconditione(Bookconditione);
 		dto.setFileName(fileName);
-		
+		System.out.println(dto.getBookId());
 		repository rp=repository.getInstance();
 		rp.create(dto);
 		

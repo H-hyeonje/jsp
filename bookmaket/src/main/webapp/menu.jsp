@@ -22,9 +22,9 @@
         	   <!--  C: 상품 입력 -->
         	<li class="nav-item"><a href="add" class="nav-link">상품 등록</a></li>
         	   <!--  u: 상품 수정 -->
-        	<li class="nav-item"> <a href="editbook?edit=updete" class="nav-link">상품 삭제</a></li>
+        	<li class="nav-item"> <a href="editbook?edit=updete" class="nav-link">상품 수정</a></li>
         	   <!--  d: 상품 삭제 -->
-        	<li class="nav-item"> <a href="editbook?edit=delet" class="nav-link">상품 수정</a></li>
+        	<li class="nav-item"> <a href="editbook?edit=delet" class="nav-link">상품 삭제</a></li>
         		<!--  로그인 -->
         	<li class="nav-item"> <a href="login" class="nav-link">login</a></li>
  

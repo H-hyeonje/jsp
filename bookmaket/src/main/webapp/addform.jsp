@@ -5,9 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href=".\\resources\\css\\bootstrap.min.css" />
-<script type="text/javascript" src="./resources/js/validation.js"></script>
+<!-- 리소스 경로는 절대 경로를 추천 -->
+
+<link rel ="stylesheet" href ="/bookmaket/resources/css/bootstrap.min.css" />
+<script type="text/javascript" src="/bookmaket/resources/js/validation.js"></script>
 <meta charset="UTF-8">
 <title>도서등록</title>
 </head>
@@ -27,19 +28,20 @@
 		<div class="row align-items-md-stretch">
 			<div class="text-end">
 				<a href="?language=ko">kor</a> | <a href="?language=en">eng</a>
+				<a href = "logout.jsp" class ="btn btn-sm btn-success pull right">logout</a>
 			</div>
 			<form action="add" name="newBook" method="post" class="form-horizontal" enctype="multipart/form-data">
 				<div class="mb-3 row">
 					<label class="col-sm-2"><fmt:message key="bookid"></fmt:message></label>
 					<div class="col-sm-3">
-						<input id="bookId" type="text" name="bookId" class="form-control">
+						<input id="bookid" type="text" name="bookid" class="form-control">
 					</div>
 				</div>
 				
 				<div class="mb-3 row">
 					<label class="col-sm-2"><fmt:message key="bookname"></fmt:message></label>
 					<div class="col-sm-3">
-						<input id="name" type="text" name="bookname" class="form-control">
+						<input id="bookname" type="text" name="bookname" class="form-control">
 					</div>
 				</div>
 				
@@ -74,7 +76,7 @@
 				<div class="mb-3 row">
 					<label class="col-sm-2"><fmt:message key="bookdescription"></fmt:message></label>
 					<div class="col-sm-3">
-						<textarea id="description" name="description" rows="2" cols="50" clasas="form-control" placeholder="100자 이상 적어주세요"></textarea>
+						<textarea id="bookdescription" name="bookdescription" rows="2" cols="50" class="form-control" placeholder="100자 이상 적어주세요"></textarea>
 					</div>
 				</div>						
 
@@ -93,11 +95,11 @@
 				</div>						
 
 				<div class="mb-3 row">
-					<label class="col-sm-2"><fmt:message key="condition"></fmt:message></label>
+					<label class="col-sm-2"><fmt:message key="bookcondition"></fmt:message></label>
 					<div class="col-sm-5">
-						<input type="radio" name="bookcondition" value="new" checked="checked"><fmt:message key="condition_new"></fmt:message>
-						<input type="radio" name="bookcondition" value="Old"><fmt:message key="condition_Old"></fmt:message>
-						<input type="radio" name="bookcondition" value="Ebook"><fmt:message key="condition_Ebook"></fmt:message>
+						<input type="radio" name="bookcondition" value="new" checked="checked"><fmt:message key="bookcondition_new"></fmt:message>
+						<input type="radio" name="bookcondition" value="Old"><fmt:message key="bookcondition_Old"></fmt:message>
+						<input type="radio" name="bookcondition" value="Ebook"><fmt:message key="bookcondition_Ebook"></fmt:message>
 					</div>
 				</div>	
 				
@@ -110,7 +112,8 @@
 
 				<div class="mb-3 row">
 					<div class="col-sm-offset-2 col-sm-10">
-						<input type="button" class="btn btn-primary"  value="<fmt:message key="button"></fmt:message>" onclick="checkAddBook()">
+						<input type="button" class="btn btn-primary" value="<fmt:message key="button"/>" onclick="CheckBook()">
+						
 					</div>
 				</div>	
 							
@@ -121,5 +124,6 @@
 	
 	</div>
 	</fmt:bundle>
+
 </body>
 </html>

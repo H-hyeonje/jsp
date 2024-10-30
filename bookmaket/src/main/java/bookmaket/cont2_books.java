@@ -16,7 +16,12 @@ public class cont2_books extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("1: 매핑되어서 doget 실행");
+		
 		repository rp=repository.getInstance();
+		if(rp==null) {
+			System.out.println("2 repository 못받음");
+		}
 		ArrayList<dto> arr;
 		try {
 			arr= rp.allread();
