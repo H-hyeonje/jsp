@@ -13,7 +13,7 @@ public class cont1_home extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getParameter(getServletName())
+		req.getParameter(getServletName());
 		RequestDispatcher rd = req.getRequestDispatcher("main.jsp");
 		rd.forward(req, resp);
 	}

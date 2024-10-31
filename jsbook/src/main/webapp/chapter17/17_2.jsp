@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="login" method="post">
-		<p> id : <input type="text" name="id">
-		<p> pw : <input type="password" name="pw">
-		<p><input type="submit" value="로그인">		
+	<form action="17_2" method="post">
+		<p> 숫자 : <input type="text" name="number">
+		<p><input type="submit" value="전송">
 	</form>
 </body>
 </html>
