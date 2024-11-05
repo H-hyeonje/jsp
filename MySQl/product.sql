@@ -54,6 +54,5 @@ select * from product;
 select member_addr,member_name from member;
 -- 하나또는 복수의 행을 검색할때 (전체행 아님)
 select * from member where member_name="아이유";
-
-select mem_name from member;							
+							
 
