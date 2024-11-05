@@ -3,20 +3,28 @@
 <%@ page import="java.util.*"%>
 <%@ page import="dto.Board"%>
 <%@ page import="dto.mdto" %>
+<%@ page session="false" %>
+<%@ page import="java.util.ArrayList" %>
 <%
 	int total_page = ((Integer) request.getAttribute("total_page")).intValue();
 	int total_record = ((Integer) request.getAttribute("total_record")).intValue();
-	int pageNum = ((Integer) request.getAttribute("pagenum")).intValue();
-	ArrayList<Board> boardList =(ArrayList<Board>)request.getAttribute("arr");
+	int pagenum = ((Integer) request.getAttribute("pagenum")).intValue();
+	ArrayList<Board> list =(ArrayList<Board>)request.getAttribute("list");
+	int count=0;
 	String sessionId=null;
 	String sessionname=null;
-	session=request.getSession(false);
+	System.out.println(total_record);
+	System.out.println(total_page);
+	System.out.println(pagenum);
+	int pages=5;
+	
+	HttpSession session=request.getSession(false);
 	mdto mdto=null;
 	if(session!=null) {
 	mdto=(mdto)session.getAttribute("member");
-	if(mdto!=null){
-	sessionId=mdto.getId();
-	sessionname=mdto.getName();
+		if(mdto!=null){
+		sessionId=mdto.getId();
+		sessionname=mdto.getName();
 	}
 	}
 	
@@ -26,16 +34,7 @@
 <head>
 <link rel="stylesheet" href="/bookmaket/resources/css/bootstrap.min.css" />
 <title>Board</title>
-<script type="text/javascript">
-	function checkForm() {	
-		if (${sessionId==null}) {
-			alert("로그인 해주세요.");
-			return false;
-		}
 
-		location.href = "./BoardWriteForm?id=<%=sessionId%>"
-	}
-</script>
 </head>
 <body>
 <div class="container py-4">
@@ -65,32 +64,36 @@
 						<th>조회</th>
 						<th>글쓴이</th>
 					</tr>
-					<%
-						if(boardList!=null){
-						for (int j = 0; j <boardList.size() ; j++){
-							
-							Board notice = (Board)boardList.get(j);
+					<%    int aa=0*pagenum*5;
+					      int ab= aa+1;
+						for (int i = ab; i <=list.size(); i++){
+							count++;
+							Board notice = (Board)list.get(i);
+							if(count>5){
+								count=1;
+								break;
+							}
 					%>
 					<tr>
 						<td><%=notice.getNum()%></td>
-						<td><a href="BoardViewAction?num=<%=notice.getNum()%>&pageNum=<%=pageNum%>"><%=notice.getSubject()%></a></td>
+						<td><a href="BoardViewAction?num=<%=notice.getNum()%>&pageNum=<%=pagenum%>"><%=notice.getSubject()%></a></td>
 						<td><%=notice.getRegist_day()%></td>
 						<td><%=notice.getHit()%></td>
 						<td><%=notice.getName()%></td>
 					</tr>
 					<%
-						}}
+						}
 					%>
 				</table>
 			</div>
 			<div align="center">
 				<%
-					for(int i=1; i<total_page;i++){ %>
-					<a href="./BoardListAction?pageNum=${i}">
-					 <%if(pageNum==i) {%>
-						<font color='4C5317'><b> [${i}]</b></font>
+					for(int i=1; i<=total_page;i++){ %>
+					<a href="BoardListAction?pagenum=<%=i%>">
+					 <%if(pagenum==i) {%>
+						<font color='4C5317'><b> [<%=i%>]</b></font>
 						<%}else{ %>
-						<font color='4C5317'> [${i}]</font>
+						<font color='4C5317'> [<%=i%>]</font>
 						<%}%>
 					</a>
 					<% } %>
@@ -98,7 +101,7 @@
 			</div>
 			
 			<div class="py-3" align="right">							
-				<a href="#" onclick="checkForm(); return false;" class="btn btn-primary">
+				<a href="BoardWriteForm?id=<%=sessionId%>" onclick="checkForm(); return;" class="btn btn-primary">
 				&laquo;글쓰기:javaScript</a>				
 				<a href="BoardWriteForm"  class="btn btn-primary">
 				&laquo;글쓰기:controller</a>				
@@ -114,6 +117,12 @@
 		</form>			
 	</div>
 	<jsp:include page="footer.jsp" />
+	<script type="text/javascript">
+	function checkForm() {	
+		if (<%=sessionId%>==null) {
+			return false;
+		}
+</script>
 </div>
 </body>
 </html>

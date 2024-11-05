@@ -3,7 +3,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.dto"%>
 <%@ page import="dao.repository" %>
-
+<%@ page session="false" %>
 
 <html>
 <head>

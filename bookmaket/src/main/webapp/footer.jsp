@@ -9,7 +9,6 @@
 <body>
 	<footer class ="pt-3 mt-4 text-body-secondary border-top">
 	&copy; BookMarket
-	<p><a href="add">add</a>
 	</footer>
 </body>
 </html>

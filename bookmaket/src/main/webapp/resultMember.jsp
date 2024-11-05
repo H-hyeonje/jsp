@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="dto.mdto" %>
+<%@ page session="false" %>
 <html>
 <head>
 <link rel="stylesheet" href="/bookmaket/resources/css/bootstrap.min.css" />
@@ -14,6 +15,8 @@
  <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
       <%	
+      		HttpSession session=request.getSession(false);
+      		
 			String msg = request.getParameter("msg");
       		if (msg.equals("0")||msg.equals("2")){
       %>

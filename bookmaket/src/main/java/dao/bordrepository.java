@@ -64,8 +64,29 @@ public class bordrepository {
 	
 	
 	//create
-	public void create() {
+	public void create(Board bd) {
+		//데이터 베이스 연결
+		Connection conn= dbconn();
 		
+		//쿼리 전송
+		pstm=null;
+		String sql="insert into board(id,name,subject,content,regist_day,hit,ip) values(?,?,?,?,?,?,?)";
+		try {
+			pstm=conn.prepareStatement(sql);
+			pstm.setString(1,bd.getId());
+			pstm.setString(2,bd.getName());
+			pstm.setString(3,bd.getSubject());
+			pstm.setString(4,bd.getContent());
+			pstm.setTimestamp(5,bd.getRegist_day());
+			pstm.setInt(6,bd.getHit());
+			pstm.setString(7,bd.getIp());
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//ResultSet 필요없음
 	}
 	
 	//read All
@@ -80,6 +101,7 @@ public class bordrepository {
 			pstm=conn.prepareStatement(sql);
 			rs=pstm.executeQuery();
 			while(rs.next()) {
+				
 				Board bo=new Board();
 				bo.setNum(rs.getInt("num"));
 				bo.setId(rs.getString("id"));
@@ -91,9 +113,10 @@ public class bordrepository {
 				bo.setIp(rs.getString("ip"));
 				
 				arr.add(bo);
+				System.out.println("arr size "+arr.size());
 			}
 		} catch (Exception e) {
-			System.out.println("실패 "+e.getMessage());
+			System.out.println("arr size "+arr.size());
 			e.printStackTrace();
 		}
 		

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="dto.mdto" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%	
-	session=request.getSession(false);
+<%
+	HttpSession session=request.getSession(false);
 	String sessionId=null;
 	if(session!=null){
+		session=request.getSession(false);
 		mdto dto=(mdto)session.getAttribute("member");
-		if(dto!=null)	{
+		if(dto!=null){
 	    sessionId = dto.getName();
 		}
 	}

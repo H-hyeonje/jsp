@@ -21,14 +21,18 @@ public class board_read_cont extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int pagenum = Integer.parseInt(req.getParameter("pagenum")) ;
+		String page= req.getParameter("pagenum");
+		int pagenum=1;
+		if(page !=null) {
+		pagenum = Integer.parseInt(page) ;
+		}
 		// 한페이지에 출력할 글의 갯수를 제한
 		int Limit=5;
 		
 		
 		bordrepository br=bordrepository.getBr();
 		ArrayList<Board> arr=br.getAllBoard();
-		int total_record =br.getTotalCount();
+		int total_record=br.getTotalCount();
 		int total_page=0;
 		if(total_record % Limit==0) {
 			 total_page=total_record/Limit;
@@ -37,13 +41,14 @@ public class board_read_cont extends HttpServlet{
 			
 		}
 		HttpSession session=req.getSession(false);
-		mdto mdto=null;
 		if(session!=null) {
-		mdto=(mdto)session.getAttribute("member");
+		mdto mdto=(mdto)session.getAttribute("member");
 		if(mdto!=null) {
 			mdto.getId();
 		}
 		}
+		
+		
 		req.setAttribute("total_page", total_page);
 		req.setAttribute("total_record", total_record);//전체 글의 갯수
 		req.setAttribute("pagenum", pagenum );//현재 페이지 번호
