@@ -120,3 +120,23 @@ select M.MEM_ID,M.MEM_NAME, SUM(PRICE*AMOUNT) "총구매액",
 		ON B.mem_id=M.mem_id
         group by M.mem_id
         order by SUM(price*AMOUNT) DESC;
+
+drop procedure if exists whileproc;
+	DELIMITER $$
+    create procedure whileproc()
+    begin
+		declare i int;
+        declare hap int;
+        set i=1;
+        set hap=0;
+    
+    while(i<=100) do
+     set hap =hap+1;
+     set i= i+i;
+     end while;
+     
+     select '1부터 100까지의 합 ==>', hap;
+     end $$
+     DELIMITER;
+     call whileproc();
+	
