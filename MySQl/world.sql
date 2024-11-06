@@ -5435,3 +5435,23 @@ commit;
 SET autocommit=@old_autocommit;
 
 -- Dump completed on 2020-01-22  9:56:18
+
+use world;
+delete from city_popul
+	where city_name like 'new%';
+    
+select * from city_popul;
+
+use market_db;
+set @myVar1=5;
+set @myVar2=4.25;
+
+select @myVar1;
+select @myVar1 + @myVar2;
+
+set @txt='가수 이름==>';
+set @height = 166;
+select @txt, mem_name
+	from member
+    where height > @height;
+
