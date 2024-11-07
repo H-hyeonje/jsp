@@ -5451,7 +5451,26 @@ select @myVar1 + @myVar2;
 
 set @txt='가수 이름==>';
 set @height = 166;
-select @txt, mem_name
+select *
+	from member;
+select @txt , mem_name
 	from member
     where height > @height;
+    
+set @count =3;
+prepare mysql from 'select mem_name, height From member ORDER BY height LIMIT?';
+execute mysql using @count;
 
+select avg(price) as "평균 가격" from buy;
+select convert(avg(price), signed) "평균 가격" 
+       from buy;
+       
+select cast('2022$12$12' as date) as "날짜$", cast('2022/12/12' as date) as "날짜/", cast('2022%12%12' as date) as "날짜%", cast('2022@12@12' as date) as "날짜@";
+
+select num, concat(convert(price,char),'x',convert(amount, char),'=') '가격x수량',price*amount '구매액'
+	from buy;
+    
+select '100'+'200';
+select concat(100,200);
+select 100+200;
+select concat('100','200');
