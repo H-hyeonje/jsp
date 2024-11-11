@@ -200,4 +200,79 @@ delimiter ;
 
 call dynamic_proc('member');    
 
+SET global LOG_BIN_TRUST_FUNCTION_CREATORS=1;
 
+USE MARKET_DB;
+drop function if exists SUMfUNC;
+DELIMITER &&
+create function SUMFUNC(number1 int, number2 int)
+	returns int
+begin
+	return number1 +number2;
+end &&
+delimiter ;
+
+select sumfunc(100,200) as '합계';
+
+
+drop function if exists calcYearFunc;
+delimiter &&
+create function calcYearFunc(dYear int)
+	returns int
+    begin
+		declare runYear int; -- 활동기간(연도)
+        set runYear = year(curdate()) -dYear;
+        return runYear;
+	end &&
+delimiter ;
+
+select calcYearFunc(2010) as '활동 햇수';
+
+select calcYearFunc(2007) into @debut2007;
+select calcYearFunc(2013) into @debut2013;
+select @debut2007-@debut2013 as '2007-2013 차이';
+
+select mem_id, mem_name, calcYearFunc(year(debut_date)) as '활동 햇수' from member;
+
+show create function calcYearFunc;
+
+drop function calcYearFunc;
+
+
+
+drop procedure if exists cursor_proc;
+delimiter &&
+create procedure cursor_proc()
+begin
+	declare memNumber int;
+    declare cnt int default 0;
+    declare totNumber int default 0;
+    declare endofRow boolean default false;
+    
+    declare memberCursor cursor for
+		select mem_number from member;
+        
+	declare continue handler 
+		for not found set endofRow =true;
+    
+    open memberCursor;
+    
+  cursor_loop: loop
+	fetch memberCursor into memNumber;
+    
+    if endofRow then
+		leave cursor_loop;
+	end if;
+    
+    set cnt=cnt+1;
+    set totNumber = totNumber + memNumber;
+end loop cursor_loop;
+
+select (totNumber/cnt) as "회원의 평균 인원 수";
+
+close memberCursor;
+
+end &&
+delimiter ;
+
+call cursor_proc();
